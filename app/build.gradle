@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.sonarqube'
 
 android {
     compileSdkVersion 28
@@ -16,6 +17,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    plugins {
+        id "org.sonarqube" version "2.8"
+    }
+
+    sonarqube {
+        properties {
+            property "sonar.projectKey", "xuanxlg_Attractions"
+            property "sonar.organization", "xuanxlg"
+            property "sonar.host.url", "https://sonarcloud.io"
+            property "sonar.login", "7d4b7cfb093ed13433b63074b724d9d39a745af8"
+        }
+    }
 }
 
 dependencies {
@@ -27,4 +41,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'net.gotev:speech:1.2.2'
+    implementation 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8'
 }
